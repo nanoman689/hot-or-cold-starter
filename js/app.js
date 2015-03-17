@@ -18,13 +18,16 @@ $(document).ready(function(){
   		var userGuessNumber = +document.getElementById('userGuess').value;
   		console.log("You guessed "+ userGuessNumber);
 
+  		/*--- Compare the guess and the actual number ---*/
+
   		checkHotCold(userGuessNumber);
+
+  		$('#userGuess').val('');
 
   		return false; 
 
   	});
 
-  	/*--- Compair the guess and the actual number ---*/
 
 });
 
@@ -40,25 +43,53 @@ checkHotCold(15);
 
 console.log(hotNumber);
 
+/*-- Start counter at zero --*/
+
+counterGuess = 0;
+
+/*-- Get the value of the counter --*/
+
+var guessCount = +document.getElementById('count');
+
 /*--- Function to check the number ---*/
 
 function checkHotCold(checkNumber){
+	/* increase the count by 1 */
+
+	counterGuess ++;
+
 	if (hotNumber === checkNumber){
-	console.log("You Got It!");	
+	console.log("You Got It!");
 	} 
 	else {
-		if (hotNumber <= (50 + checkNumber)) {
+		/* within than 50 */
+		if (hotNumber >= (checkNumber - 50) && hotNumber <= (checkNumber + 50)) {
 		console.log("So Cold");
 		} 
 		else {
-			if (hotNumber <= (20 + checkNumber)) {
+			/* within than 20 */
+			if (hotNumber >= (checkNumber - 30) && hotNumber <= (checkNumber + 30)) {
 			console.log("Cold");
 			}
 			else {
-			console.log("Try Again!");	
+				/* within then 10 */
+				if (hotNumber >= (checkNumber - 10) && hotNumber <= (checkNumber + 10)) {
+				console.log("Warm!");	
+				}
+				else {
+					/* within then 5 */
+					if (hotNumber >= (checkNumber - 5) && hotNumber <= (checkNumber + 5)){
+					console.log("So Very Warm!");
+					}
+				}
 			}	
 		}
+		/* Nope, try again! */
+		console.log("Try Again!");
 	}
+		
+	console.log("Counter counter guess is: " + counterGuess);
+	console.log("Guess count is: " + guessCount);	
 }
 
 
