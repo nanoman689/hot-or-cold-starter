@@ -15,7 +15,7 @@ $(document).ready(function(){
   	
   	$('input#guessButton').click(function() {
   		$('#userGuess').val;
-  		var userGuessNumber = +document.getElementById('userGuess').value;
+  		var userGuessNumber = $('#userGuess').val();
   		console.log("You guessed "+ userGuessNumber);
 
   		/*--- Compare the guess and the actual number ---*/
@@ -35,12 +35,6 @@ $(document).ready(function(){
 /*-- Random Number Picker --*/
 
 var hotNumber = Math.floor((Math.random() * 100) + 1);
-
-/* Test Number 
-var hotNumber = 20;
-checkHotCold(15);
-*/
-
 console.log(hotNumber);
 
 /*-- Start counter at zero --*/
@@ -51,6 +45,10 @@ counterGuess = 0;
 
 var guessCount = +document.getElementById('count');
 
+/*-- check the guessNumber against the hotNumber) ---*/
+
+var difference = Math.abs(hotNumber - checkNumber);
+
 /*--- Function to check the number ---*/
 
 function checkHotCold(checkNumber){
@@ -59,40 +57,29 @@ function checkHotCold(checkNumber){
 	counterGuess ++;
 
 	if (hotNumber === checkNumber){
-	console.log("You Got It!");
-	} 
-	else {
-		/* within than 50 */
-		if (hotNumber >= (checkNumber - 50) && hotNumber <= (checkNumber + 50)) {
-		console.log("So Cold");
-		} 
-		else {
-			/* within than 20 */
-			if (hotNumber >= (checkNumber - 30) && hotNumber <= (checkNumber + 30)) {
-			console.log("Cold");
-			}
-			else {
-				/* within then 10 */
-				if (hotNumber >= (checkNumber - 10) && hotNumber <= (checkNumber + 10)) {
-				console.log("Warm!");	
-				}
-				else {
-					/* within then 5 */
-					if (hotNumber >= (checkNumber - 5) && hotNumber <= (checkNumber + 5)){
-					console.log("So Very Warm!");
-					}
-				}
-			}	
-		}
-		/* Nope, try again! */
-		console.log("Try Again!");
+		  console.log("You Got It!");
+		} else if (difference >= 50) {
+		    /* within than 50 */
+		    console.log("So Cold");
+		} else if (hotNumber >= (checkNumber - 30) && hotNumber <= (checkNumber + 30)) {
+		  /* within than 20 */
+		  console.log("Cold");
+		} else if (hotNumber >= (checkNumber - 10) && hotNumber <= (checkNumber + 10)) {
+		  /* within then 10 */
+		  console.log("Warm!"); 
+		} else if (hotNumber >= (checkNumber - 5) && hotNumber <= (checkNumber + 5)){
+		  /* within then 5 */
+		  console.log("So Very Warm!");
+		} else {
+		  /* Nope, try again! */
+		  console.log("Try Again!");
 	}
-		
-	console.log("Counter counter guess is: " + counterGuess);
-	console.log("Guess count is: " + guessCount);	
 }
 
 
+
+difference >= 50;
+difference >= 30;
 
 
 
