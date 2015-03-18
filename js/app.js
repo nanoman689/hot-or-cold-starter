@@ -47,7 +47,7 @@ var guessCount = +document.getElementById('count');
 
 /*-- check the guessNumber against the hotNumber) ---*/
 
-var difference = Math.abs(hotNumber - checkNumber);
+
 
 /*--- Function to check the number ---*/
 
@@ -56,30 +56,28 @@ function checkHotCold(checkNumber){
 
 	counterGuess ++;
 
-	if (hotNumber === checkNumber){
+	var difference = Math.abs(hotNumber - checkNumber);
+
+	if (difference === 0){
 		  console.log("You Got It!");
 		} else if (difference >= 50) {
-		    /* within than 50 */
-		    console.log("So Cold");
-		} else if (hotNumber >= (checkNumber - 30) && hotNumber <= (checkNumber + 30)) {
-		  /* within than 20 */
-		  console.log("Cold");
-		} else if (hotNumber >= (checkNumber - 10) && hotNumber <= (checkNumber + 10)) {
-		  /* within then 10 */
-		  console.log("Warm!"); 
-		} else if (hotNumber >= (checkNumber - 5) && hotNumber <= (checkNumber + 5)){
-		  /* within then 5 */
-		  console.log("So Very Warm!");
+			console.log("So Very Cold");
+		} else if (difference >= 40) {
+		    console.log("Still Cold");
+		} else if (difference >= 30) {
+			console.log("Cold");
+		} else if (difference >= 20) {
+			console.log("Warm!"); 
+		} else if (difference >= 10) {
+			console.log("Warmer!");			
+		} else if (difference >= 5){
+			console.log("Getting Close!");
+		} else if (difference >= 1){
+			console.log("Almost Have It!");			
 		} else {
-		  /* Nope, try again! */
 		  console.log("Try Again!");
 	}
 }
-
-
-
-difference >= 50;
-difference >= 30;
 
 
 
